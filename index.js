@@ -12,9 +12,10 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
- 
+  console.log('res : ' + res);
   let body = req.body;
-
+  console.log('body : ' + body);
+  
   // Checks this is an event from a page subscription
   if (body.object === 'page') {
 
@@ -60,7 +61,8 @@ app.get('/webhook', (req, res) => {
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
   let challenge = req.query['hub.challenge'];
-
+  console.log('mode : ' + mode);
+  console.log('token : ' + token);
   // Checks if a token and mode is in the query string of the request
   if (mode && token) {
 
